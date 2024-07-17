@@ -1,6 +1,17 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { 'andweeb/presence.nvim' },
+  { 'rescript-lang/vim-rescript', ft = "rescript" },
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require('neoscroll').setup({})
+    end
+  },
+  { 'junegunn/limelight.vim' },
+  { 'tek256/simple-dark' },
+  { 'folke/tokyonight.nvim' },
   {
     'akinsho/flutter-tools.nvim',
     dependencies = {
@@ -121,7 +132,6 @@ return require("lazy").setup({
   { 'nvim-telescope/telescope.nvim',          dependencies = { { 'nvim-lua/plenary.nvim' } } },
   { 'ggandor/lightspeed.nvim' },
   { "mbbill/undotree" },
-  { 'alexanderjeurissen/lumiere.vim' },
   { "nvim-treesitter/nvim-treesitter-context" },
-  --  { 'andweeb/presence.nvim' },
+  { "catppuccin/nvim",                        name = "catppuccin",                           priority = 1000 },
 }, opts)
