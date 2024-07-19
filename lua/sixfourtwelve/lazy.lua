@@ -1,6 +1,13 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  {
+    'Exafunction/codeium.vim',
+    config = function()
+      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+    end
+
+  },
   { 'andweeb/presence.nvim' },
   { 'rescript-lang/vim-rescript', ft = "rescript" },
   {
