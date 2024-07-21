@@ -3,7 +3,7 @@
 format = """
 [](surface0)\
 $os\
-$username\
+$hostname\
 [](bg:peach fg:surface0)\
 $directory\
 [](fg:peach bg:green)\
@@ -160,6 +160,10 @@ format = '[[  $time ](fg:mantle bg:purple)]($style)'
 
 [line_break]
 disabled = false
+
+[hostname]
+ssh_only = false
+format = '[$hostname ](bg:surface0 fg:text)'
 
 [character]
 disabled = false
