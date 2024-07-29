@@ -49,7 +49,8 @@ vim.o.termguicolors = true
 require("tokyonight").setup({
   style = "night"
 })
-vim.cmd [[colorscheme catppuccin-mocha]]
+-- vim.cmd [[colorscheme catppuccin-mocha]]
+vim.cmd [[colorscheme tokyonight]]
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 

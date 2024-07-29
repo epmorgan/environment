@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { 'rescript-lang/vim-rescript', ft = "rescript" },
   {
     'Exafunction/codeium.vim',
     config = function()
