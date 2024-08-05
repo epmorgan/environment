@@ -92,8 +92,6 @@ require('lspconfig')['unison'].setup {
   on_attach = on_attach,
 }
 
--- require('lspconfig').hls.setup {}
-
 require('lspconfig').rescriptls.setup {}
 
 lsp.setup()
