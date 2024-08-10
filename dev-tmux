@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tmux new-session -d -s § -n nvim
+tmux new-window -t § -n git
+tmux new-window -t § -n nix
+tmux new-window -t § -n ssh
+tmux select-window -t §:nvim
+tmux attach-session -t §
