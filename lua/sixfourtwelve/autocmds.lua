@@ -7,8 +7,20 @@ vim.api.nvim_create_autocmd('Filetype', {
 
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setIndent',
-  pattern = { 'c', 'cpp', 'objc' },
+  pattern = { 'c' },
   command = 'setlocal shiftwidth=8 tabstop=8'
+})
+
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'objc', 'objcpp' },
+  command = 'setlocal shiftwidth=4 tabstop=4'
+})
+
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'cpp' },
+  command = 'setlocal shiftwidth=4 tabstop=4'
 })
 
 vim.api.nvim_create_autocmd('Filetype', {
@@ -17,7 +29,11 @@ vim.api.nvim_create_autocmd('Filetype', {
   command = 'setlocal shiftwidth=4 tabstop=4'
 })
 
-
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'zig' },
+  command = 'setlocal shiftwidth=4 tabstop=4'
+})
 
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setIndent',

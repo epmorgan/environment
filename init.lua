@@ -42,8 +42,11 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 ]], true)
 
+-- autocmd BufNewFile,BufRead *.h setlocal filetype=objcpp
+-- autocmd BufNewFile,BufRead *.mm setlocal filetype=objcpp
+
 vim.api.nvim_command(
-  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.php,*.odin,*.rs,*.ts,*.test.ts,*.tsx,*.test.tsx,*.js,*.test.js,*.jsx,*.test.jsx,*.cs,*.java lua vim.lsp.buf.format()")
+  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.mm,*.php,*.odin,*.rs,*.ts,*.test.ts,*.tsx,*.test.tsx,*.js,*.test.js,*.jsx,*.test.jsx,*.cs,*.java lua vim.lsp.buf.format()")
 
 vim.o.termguicolors = true
 require("tokyonight").setup({

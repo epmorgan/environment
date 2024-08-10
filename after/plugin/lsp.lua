@@ -94,7 +94,6 @@ require('lspconfig')['unison'].setup {
 
 require('lspconfig').rescriptls.setup {}
 
-lsp.setup()
 
 require 'lspconfig'.sourcekit.setup {
   capabilities = {
@@ -123,6 +122,8 @@ require 'lspconfig'.dartls.setup {
     }
   },
 }
+
+lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true
