@@ -31,7 +31,6 @@ require('formatter').setup({
   }
 })
 
-
 vim.api.nvim_exec([[
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
@@ -58,18 +57,6 @@ vim.cmd [[colorscheme tokyonight]]
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 require('gitsigns').setup()
-require("presence").setup({
-  auto_update         = true,
-  editing_text        = "Editing %s",
-  file_explorer_text  = "Browsing %s",
-  git_commit_text     = "Committing changes",
-  plugin_manager_text = "Managing plugins",
-  reading_text        = "Reading %s",
-  workspace_text      = "Working on %s",
-  line_number_text    = "Line %s out of %s",
-  main_image          = "file",
-  buttons             = true,
-})
 
 require('lualine').setup {
   options = {
@@ -95,6 +82,25 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = { 'location' },
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {
+      {
+        'buffers',
+        mode = 0,
+        path = 0,
+        use_mode_colors = true,
+        show_modified_status = true,
+        symbols = {
+          modified = ' ●', -- Text to show when the buffer is modified
+          alternate_file = '',
+          directory = '', -- Text to show when the buffer is a directory
+        },
+      }
+    },
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
   extensions = {},
 }

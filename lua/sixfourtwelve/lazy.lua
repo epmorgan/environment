@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { "ionide/Ionide-vim" },
   { 'reasonml-editor/vim-reason-plus' },
   { 'danielo515/nvim-treesitter-reason' },
   { 'rescript-lang/vim-rescript',       ft = "rescript" },
@@ -11,7 +12,7 @@ return require("lazy").setup({
     end
 
   },
-  { 'andweeb/presence.nvim' },
+  -- { 'andweeb/presence.nvim' },
   { 'rescript-lang/vim-rescript', ft = "rescript" },
   {
     "karb94/neoscroll.nvim",
