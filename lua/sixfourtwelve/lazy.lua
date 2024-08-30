@@ -1,6 +1,10 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  {
+    'Wansmer/symbol-usage.nvim',
+    event = 'LspAttach',
+  },
   { "ionide/Ionide-vim" },
   { 'reasonml-editor/vim-reason-plus' },
   { 'danielo515/nvim-treesitter-reason' },
@@ -21,7 +25,6 @@ return require("lazy").setup({
     end
   },
   { 'junegunn/limelight.vim' },
-  { 'tek256/simple-dark' },
   { 'folke/tokyonight.nvim' },
   {
     'akinsho/flutter-tools.nvim',
