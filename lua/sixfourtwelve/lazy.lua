@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { 'andweeb/presence.nvim' },
   {
     'Wansmer/symbol-usage.nvim',
     event = 'LspAttach',
