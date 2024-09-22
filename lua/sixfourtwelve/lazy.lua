@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { "ocaml-mlx/ocaml_mlx.nvim" },
   { 'andweeb/presence.nvim' },
   {
     'Wansmer/symbol-usage.nvim',

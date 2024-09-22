@@ -2,6 +2,7 @@ vim.o.termguicolors = true
 vim.o.number = true
 vim.o.laststatus = 2
 vim.o.numberwidth = 1
+vim.o.relativenumber = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
@@ -31,3 +32,4 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 5
+-- vim.opt.colorcolumn = '80'

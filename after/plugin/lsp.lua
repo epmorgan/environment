@@ -94,7 +94,6 @@ require('lspconfig')['unison'].setup {
 
 require('lspconfig').rescriptls.setup {}
 
-
 require 'lspconfig'.sourcekit.setup {
   capabilities = {
     workspace = {

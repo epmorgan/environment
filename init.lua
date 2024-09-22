@@ -50,7 +50,13 @@ vim.api.nvim_command(
 
 vim.o.termguicolors = true
 require("tokyonight").setup({
-  style = "night"
+  style = "night",
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { italic = true },
+    variables = { italic = true },
+  }
 })
 -- vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[colorscheme tokyonight]]
@@ -168,9 +174,9 @@ local function text_format(symbol)
   return res
 end
 
--- require('symbol-usage').setup({
+--require('symbol-usage').setup({
 --  text_format = text_format,
--- })
+--})
 
 require("presence").setup({
   auto_update = true,
@@ -190,3 +196,5 @@ require("presence").setup({
   workspace_text = "Working on %s",
   line_number_text = "Line %s out of %s",
 })
+
+require 'ocaml_mlx'
