@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { "github/copilot.vim" },
   { "ocaml-mlx/ocaml_mlx.nvim" },
   { 'andweeb/presence.nvim' },
   {
@@ -11,15 +12,8 @@ return require("lazy").setup({
   { 'reasonml-editor/vim-reason-plus' },
   { 'danielo515/nvim-treesitter-reason' },
   { 'rescript-lang/vim-rescript',       ft = "rescript" },
-  {
-    'Exafunction/codeium.vim',
-    config = function()
-      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-    end
-
-  },
-  -- { 'andweeb/presence.nvim' },
-  { 'rescript-lang/vim-rescript', ft = "rescript" },
+  { 'andweeb/presence.nvim' },
+  { 'rescript-lang/vim-rescript',       ft = "rescript" },
   {
     "karb94/neoscroll.nvim",
     config = function()

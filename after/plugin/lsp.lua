@@ -9,6 +9,8 @@ lsp.set_preferences({
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
 })
 
+require 'lspconfig'.biome.setup {}
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -33,6 +35,7 @@ lsp.setup_nvim_cmp({
 
 local options = { buffer = bufnr, remap = false }
 lsp.on_attach(function(client, bufnr)
+  lsp.buffer_autoformat()
   vim.keymap.set('n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', options)
   vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, options)
   vim.keymap.set("n", "bh", function() vim.lsp.buf.hover() end, options)

@@ -13,7 +13,7 @@ vim.o.wrap = true
 vim.o.signcolumn = "yes"
 vim.o.syntax = "on"
 
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 
 vim.opt.wrap = true
 
