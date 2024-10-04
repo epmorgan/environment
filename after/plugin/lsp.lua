@@ -9,8 +9,6 @@ lsp.set_preferences({
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
 })
 
-require 'lspconfig'.biome.setup {}
-
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -138,6 +136,8 @@ local customizations = {
   { rule = '*semi',     severity = 'off', fixable = true },
 }
 
+require 'lspconfig'.biome.setup {
+}
 require 'lspconfig'.eslint.setup(
   {
     experimental = {

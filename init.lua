@@ -58,8 +58,8 @@ require("tokyonight").setup({
     variables = { italic = true },
   }
 })
--- vim.cmd [[colorscheme catppuccin-mocha]]
-vim.cmd [[colorscheme tokyonight]]
+
+vim.cmd [[colorscheme catppuccin]]
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 

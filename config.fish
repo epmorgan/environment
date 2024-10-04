@@ -19,8 +19,14 @@ set -U fish_greeting ""
 set -gx EDITOR nvim
 
 test -r '/Users/ethanmorgan/.opam/opam-init/init.fish' && source '/Users/ethanmorgan/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+
 starship init fish | source
+
+eval "$(rbenv init - --no-rehash fish)"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+set -gx NVM_DIR (brew --prefix nvm)
+set --universal nvm_default_version 22.9
