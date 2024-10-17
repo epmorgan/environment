@@ -179,3 +179,6 @@ end
 --})
 
 require 'ocaml_mlx'
+
+require("ts-error-translator").setup()
+require('tsc').setup()

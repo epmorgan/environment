@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 
 return require("lazy").setup({
+  { "dmmulroy/tsc.nvim" },
+  { "dmmulroy/ts-error-translator.nvim" },
   {
     "scalameta/nvim-metals",
     dependencies = {
@@ -32,7 +34,6 @@ return require("lazy").setup({
     'Wansmer/symbol-usage.nvim',
     event = 'LspAttach',
   },
-  { "ionide/Ionide-vim" },
   { 'reasonml-editor/vim-reason-plus' },
   { 'danielo515/nvim-treesitter-reason' },
   { 'rescript-lang/vim-rescript',       ft = "rescript" },

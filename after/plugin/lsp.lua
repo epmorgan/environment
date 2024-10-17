@@ -1,13 +1,10 @@
 local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  "vtsls",
-})
-
 lsp.set_preferences({
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
 })
+
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Insert }
@@ -46,15 +43,10 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 
-lsp.configure("vtsls", {
-  root_dir = require("lspconfig").util.root_pattern(".git", "pnpm-workspace.yaml", "pnpm-lock.yaml", "yarn.lock",
-    "package-lock.json", "bun.lockb"),
-  experimental = {
-    completion = {
-      entriesLimit = 3
-    }
-  }
-})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+  require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+  vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+end
 
 -- This function is for configuring a buffer when an LSP is attached
 local on_attach = function(client, bufnr)
@@ -87,6 +79,23 @@ local on_attach = function(client, bufnr)
   -- This setting is to display hover information about the symbol under the cursor
   vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 end
+
+lsp.configure("vtsls", {
+  root_dir = require("lspconfig").util.root_pattern("pnpm-workspace.yaml", "pnpm-lock.yaml", "yarn.lock",
+    "package-lock.json", "bun.lockb", "package.json"),
+  experimental = {
+    completion = {
+      entriesLimit = 3
+    }
+  }
+})
+
+
+--local nvim_lsp = require('lspconfig')
+--nvim_lsp.denols.setup {
+--  on_attach = on_attach,
+--  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+-- }
 
 -- Setup the Unison LSP
 require('lspconfig')['unison'].setup {
@@ -143,7 +152,7 @@ require 'lspconfig'.eslint.setup(
     experimental = {
       useFlatConfig = true
     },
-    on_attach = function(client, bufnr)
+    on_attach = function(_client, bufnr)
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         command = "EslintFixAll",
