@@ -59,6 +59,11 @@ require("tokyonight").setup({
   }
 })
 
+require("catppuccin").setup({
+  transparent_background = true,
+})
+
+
 vim.cmd [[colorscheme catppuccin]]
 
 vim.api.nvim_set_option("clipboard", "unnamed")
@@ -181,4 +186,4 @@ end
 require 'ocaml_mlx'
 
 require("ts-error-translator").setup()
-require('tsc').setup()
+-- require('tsc').setup()

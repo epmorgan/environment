@@ -91,11 +91,11 @@ lsp.configure("vtsls", {
 })
 
 
-local nvim_lsp = require('lspconfig')
-nvim_lsp.denols.setup {
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-}
+--local nvim_lsp = require('lspconfig')
+--nvim_lsp.denols.setup {
+--  on_attach = on_attach,
+--  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+-- }
 
 -- Setup the Unison LSP
 require('lspconfig')['unison'].setup {
@@ -103,34 +103,6 @@ require('lspconfig')['unison'].setup {
 }
 
 require('lspconfig').rescriptls.setup {}
-
-require 'lspconfig'.sourcekit.setup {
-  capabilities = {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    },
-  },
-}
-
-require 'lspconfig'.dartls.setup {
-  cmd = { "dart", "language-server", "--protocol=lsp" },
-  filetypes = { "dart" },
-  init_options = {
-    closingLabels = true,
-    flutterOutline = true,
-    onlyAnalyzeProjectsWithOpenFiles = true,
-    outline = true,
-    suggestFromUnimportedLibraries = true
-  },
-  settings = {
-    dart = {
-      completeFunctionCalls = true,
-      showTodos = true
-    }
-  },
-}
 
 local customizations = {
   { rule = 'style/*',   severity = 'off', fixable = true },
@@ -145,8 +117,6 @@ local customizations = {
   { rule = '*semi',     severity = 'off', fixable = true },
 }
 
-require 'lspconfig'.biome.setup {
-}
 require 'lspconfig'.eslint.setup(
   {
     experimental = {

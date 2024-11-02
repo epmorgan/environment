@@ -1,7 +1,10 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 return require("lazy").setup({
-  { "dmmulroy/tsc.nvim" },
+  { "HiPhish/rainbow-delimiters.nvim" },
+  { 'Olical/conjure' },
+  -- { "dmmulroy/tsc.nvim" },
   { "dmmulroy/ts-error-translator.nvim" },
   {
     "scalameta/nvim-metals",

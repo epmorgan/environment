@@ -6,6 +6,13 @@ require("noice").setup({
       ["cmp.entry.get_documentation"] = true,
     },
   },
+  views = {
+    mini = {
+      win_options = {
+        winblend = 0
+      }
+    },
+  },
   presets = {
     bottom_search = true,
     command_palette = true,
