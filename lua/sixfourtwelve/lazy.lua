@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "onsails/lspkind.nvim" },
   { "HiPhish/rainbow-delimiters.nvim" },
   { 'Olical/conjure' },
   -- { "dmmulroy/tsc.nvim" },

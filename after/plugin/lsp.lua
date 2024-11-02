@@ -5,7 +5,6 @@ lsp.set_preferences({
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
 })
 
-
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Insert }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -164,4 +163,17 @@ lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true
+})
+
+local lspkind = require('lspkind')
+
+cmp.setup({
+  formatting = {
+    fields = { 'abbr', 'kind', 'menu' },
+    format = lspkind.cmp_format({
+      mode = 'text_symbol', -- show only symbol annotations
+      maxwidth = 50,
+      ellipsis_char = '...',
+    })
+  },
 })
