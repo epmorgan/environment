@@ -101,20 +101,9 @@ require('lspconfig')['unison'].setup {
   on_attach = on_attach,
 }
 
-require('lspconfig').rescriptls.setup {}
+require 'lspconfig'.ruby_lsp.setup {}
 
-local customizations = {
-  { rule = 'style/*',   severity = 'off', fixable = true },
-  { rule = 'format/*',  severity = 'off', fixable = true },
-  { rule = '*-indent',  severity = 'off', fixable = true },
-  { rule = '*-spacing', severity = 'off', fixable = true },
-  { rule = '*-spaces',  severity = 'off', fixable = true },
-  { rule = '*-order',   severity = 'off', fixable = true },
-  { rule = '*-dangle',  severity = 'off', fixable = true },
-  { rule = '*-newline', severity = 'off', fixable = true },
-  { rule = '*quotes',   severity = 'off', fixable = true },
-  { rule = '*semi',     severity = 'off', fixable = true },
-}
+require('lspconfig').rescriptls.setup {}
 
 require 'lspconfig'.eslint.setup(
   {
@@ -152,12 +141,18 @@ require 'lspconfig'.eslint.setup(
       "pcss",
       "postcss"
     },
-    settings = {
-      -- Silent the stylistic rules in you IDE, but still auto fix them
-      rulesCustomizations = customizations,
-    },
   }
 )
+
+require('lspconfig')['hls'].setup {
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
+  settings = {
+    haskell = {
+      cabalFormattingProvider = "cabalfmt",
+      formattingProvider = "fourmolu"
+    }
+  }
+}
 
 lsp.setup()
 
@@ -171,9 +166,19 @@ cmp.setup({
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
     format = lspkind.cmp_format({
-      mode = 'text_symbol', -- show only symbol annotations
+      mode = 'symbol_text',
       maxwidth = 50,
       ellipsis_char = '...',
     })
   },
 })
+
+vim.lsp.commands["editor.action.showReferences"] = function(command, ctx)
+  local locations = command.arguments[3]
+  local client = vim.lsp.get_client_by_id(ctx.client_id)
+  if locations and #locations > 0 then
+    local items = vim.lsp.util.locations_to_items(locations, client.offset_encoding)
+    vim.fn.setloclist(0, {}, " ", { title = "References", items = items, context = ctx })
+    vim.api.nvim_command("lopen")
+  end
+end
