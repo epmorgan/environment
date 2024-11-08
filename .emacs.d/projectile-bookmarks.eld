@@ -1,1 +1,0 @@
-("~/" "~/workspace/hut/" "~/workspace/one-menu/")
