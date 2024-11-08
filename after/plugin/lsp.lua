@@ -42,24 +42,13 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
-  require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
-  vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
-end
-
--- This function is for configuring a buffer when an LSP is attached
 local on_attach = function(client, bufnr)
-  -- Always show the signcolumn, otherwise it would shift the text each time
-  -- diagnostics appear/become resolved
   vim.o.signcolumn = 'yes'
 
-  -- Update the cursor hover location every 1/4 of a second
   vim.o.updatetime = 250
 
-  -- Disable appending of the error text at the offending line
   vim.diagnostic.config({ virtual_text = false })
 
-  -- Enable a floating window containing the error text when hovering over an error
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()
@@ -75,7 +64,6 @@ local on_attach = function(client, bufnr)
     end
   })
 
-  -- This setting is to display hover information about the symbol under the cursor
   vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 end
 
@@ -90,13 +78,6 @@ lsp.configure("vtsls", {
 })
 
 
---local nvim_lsp = require('lspconfig')
---nvim_lsp.denols.setup {
---  on_attach = on_attach,
---  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
--- }
-
--- Setup the Unison LSP
 require('lspconfig')['unison'].setup {
   on_attach = on_attach,
 }

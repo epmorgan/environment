@@ -32,4 +32,4 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 5
--- vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '80'
