@@ -3,7 +3,13 @@ vim.api.nvim_create_augroup('setIndent', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setIndent',
   pattern = { 'c' },
-  command = 'setlocal shiftwidth=8 tabstop=8'
+  command = 'setlocal shiftwidth=2 tabstop=2'
+})
+
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'fsharp' },
+  command = 'setlocal shiftwidth=4 tabstop=4'
 })
 
 vim.api.nvim_create_autocmd('Filetype', {

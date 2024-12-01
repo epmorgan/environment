@@ -1,8 +1,12 @@
 #!/bin/bash
 
-tmux new-session -d -s § -n nvim
-tmux new-window -t § -n git
-tmux new-window -t § -n nix
-tmux new-window -t § -n ssh
-tmux select-window -t §:nvim
-tmux attach-session -t §
+SESSION_NAME=${1:- }
+
+tmux new-session -d -s "$SESSION_NAME" -n nvim
+tmux new-window -t "$SESSION_NAME" -n git
+tmux new-window -t "$SESSION_NAME" -n nix
+tmux new-window -t "$SESSION_NAME" -n irc
+tmux new-window -t "$SESSION_NAME" -n db
+tmux new-window -t "$SESSION_NAME" -n logs
+tmux select-window -t "$SESSION_NAME":nvim
+tmux attach-session -t "$SESSION_NAME"

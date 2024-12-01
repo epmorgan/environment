@@ -7,7 +7,7 @@
 " ██        ██▄▄▄███  ▄▄▄██▄▄▄  ▀██▄▄███  ▀██▄▄▄▄█
 " ▀▀         ▀▀▀▀ ▀▀  ▀▀▀▀▀▀▀▀   ▄▀▀▀ ██    ▀▀▀▀▀
 "                                ▀████▀▀
-" File:       paige-system.vim
+" File:       paige-dark.vim
 " Maintainer: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 " License:    GPLv3
 
@@ -21,9 +21,9 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-set background=light
+set background=dark
 
-let g:colors_name = "paige"
+let g:colors_name = "paige-dark"
 
 if exists("*<SID>PaigeHighlight")
 	delf <SID>PaigeHighlight
@@ -54,37 +54,37 @@ function! <SID>PaigeHighlight(group, type)
 endfunction
 
 " Types -> [ ctermbg, ctermfg, cterm, guibg, guifg, gui ]
-let s:default_text            = [   '0',   '7',          '', '#ffffff', '#080808',          '' ]
-let s:default_text_bold       = [   '0',   '7',      'bold', '#ffffff', '#080808',      'bold' ]
-let s:default_text_italic     = [   '0',   '7',    'italic', '#ffffff', '#080808',    'italic' ]
-let s:default_text_underline  = [   '0',   '7', 'underline', '#ffffff', '#080808', 'underline' ]
+let s:default_text            = [ '232', '231',          '', '#080808', '#ffffff',          '' ]
+let s:default_text_bold       = [ '232', '231',      'bold', '#080808', '#ffffff',      'bold' ]
+let s:default_text_italic     = [ '232', '231',    'italic', '#080808', '#ffffff',    'italic' ]
+let s:default_text_underline  = [ '232', '231', 'underline', '#080808', '#ffffff', 'underline' ]
 
-let s:alt_fg_text             = [   '0', '245',          '', '#ffffff', '#8a8a8a',          '' ]
-let s:alt_fg_text_none        = [   '0', '245',      'none', '#ffffff', '#8a8a8a',      'none' ]
-let s:alt_fg_text_2           = [   '0', '248',          '', '#ffffff', '#a8a8a8',          '' ]
+let s:alt_fg_text             = [ '232', '238',          '', '#080808', '#444444',          '' ]
+let s:alt_fg_text_none        = [ '232', '238',      'none', '#080808', '#444444',      'none' ]
+let s:alt_fg_text_2           = [ '232', '248',          '', '#080808', '#a8a8a8',          '' ]
 
-let s:alt_bg_text             = [ '254',   '7',          '', '#e4e4e4', '#080808',          '' ]
-let s:alt_bg_text_bold        = [ '254',   '7',      'bold', '#e4e4e4', '#080808',      'bold' ]
-let s:alt_bg_text_italic      = [ '254',   '7',    'italic', '#e4e4e4', '#080808',    'italic' ]
-let s:alt_bg_text_underline   = [ '254',   '7', 'underline', '#e4e4e4', '#080808', 'underline' ]
-let s:alt_bg_text_no_override = [ '254',    '',      'none', '#e4e4e4',        '',      'none' ]
-let s:alt_bg_text_none        = [ '254',   '7',      'none', '#e4e4e4', '#080808',      'none' ]
-let s:alt_bg_no_fg            = [ '254', '254',      'none', '#e4e4e4', '#e4e4e4',      'none' ]
+let s:alt_bg_text             = [ '235', '231',          '', '#262626', '#ffffff',          '' ]
+let s:alt_bg_text_bold        = [ '235', '231',      'bold', '#262626', '#ffffff',      'bold' ]
+let s:alt_bg_text_italic      = [ '235', '231',    'italic', '#262626', '#ffffff',    'italic' ]
+let s:alt_bg_text_underline   = [ '235', '231', 'underline', '#262626', '#ffffff', 'underline' ]
+let s:alt_bg_text_no_override = [ '235',    '',      'none', '#262626',        '',      'none' ]
+let s:alt_bg_text_none        = [ '235', '231',      'none', '#262626', '#ffffff',      'none' ]
+let s:alt_bg_no_fg            = [ '235', '235',      'none', '#262626', '#e4e4e4',      'none' ]
 
-let s:green_bg_text           = [ '148',   '7',          '', '#afd700', '#080808',          '' ]
-let s:red_bg_text             = [ '197',   '7',          '', '#ff005f', '#080808',          '' ]
-let s:yellow_bg_text          = [ '220',   '7',          '', '#ffd700', '#080808',          '' ]
-let s:blue_bg_text            = [  '39',   '7',          '', '#00afff', '#080808',          '' ]
-let s:purple_bg_text_none     = [ '141',   '7',      'none', '#af87ff', '#080808',      'none' ]
-let s:alt_purple_bg_text_none = [ '139',   '7',      'none', '#af87af', '#080808',      'none' ]
+let s:green_bg_text           = [ '106', '231',          '', '#87af00', '#ffffff',          '' ]
+let s:red_bg_text             = [ '160', '231',          '', '#d70000', '#ffffff',          '' ]
+let s:yellow_bg_text          = [ '178', '231',          '', '#d7af00', '#ffffff',          '' ]
+let s:blue_bg_text            = [  '39', '231',          '', '#00afff', '#ffffff',          '' ]
+let s:purple_bg_text_none     = [ '141', '231',      'none', '#af87ff', '#ffffff',      'none' ]
+let s:alt_purple_bg_text_none = [ '139', '231',      'none', '#af87af', '#ffffff',      'none' ]
 
-let s:red_fg_text             = [   '0', '196',          '', '#ffffff', '#ff0000',          '' ]
-let s:green_fg_text           = [   '0',  '34',          '', '#ffffff', '#00af00',          '' ]
-let s:blue_fg_text            = [   '0',  '21',          '', '#ffffff', '#0000ff',          '' ]
-let s:blue_fg_text_underline  = [   '0',  '21', 'underline', '#ffffff', '#0000ff', 'underline' ]
+let s:red_fg_text             = [ '232', '196',          '', '#080808', '#ff0000',          '' ]
+let s:green_fg_text           = [ '232',  '34',          '', '#080808', '#00af00',          '' ]
+let s:blue_fg_text            = [ '232',  '27',          '', '#080808', '#005fff',          '' ]
+let s:blue_fg_text_underline  = [ '232',  '27', 'underline', '#080808', '#005fff', 'underline' ]
 
-let s:menu_select             = [ '70 ',   '0',      'bold', '#5faf00', '#ffffff',          '' ]
-let s:menu_no_select          = [ '240',   '0',          '', '#585858', '#ffffff',          '' ]
+let s:menu_select             = [  '70', '231',      'bold', '#5faf00', '#ffffff',          '' ]
+let s:menu_no_select          = [ '240', '231',          '', '#585858', '#ffffff',          '' ]
 let s:menu_scroll_bar         = [ '240', '240',          '', '#585858', '#585858',          '' ]
 let s:menu_scroll_bar_thumb   = [ '202', '202',          '', '#585858', '#ff5f00',          '' ]
 
@@ -266,3 +266,9 @@ call <sid>PaigeHighlight('manLongOptionDesc', s:default_text_bold)
 " ALE
 call <sid>PaigeHighlight('ALEErrorSign',   s:red_bg_text)
 call <sid>PaigeHighlight('ALEWarningSign', s:green_fg_text)
+
+" quickfix
+call <sid>PaigeHighlight('qfFilename', s:default_text_bold)
+call <sid>PaigeHighlight('qfSeparator', s:default_text)
+call <sid>PaigeHighlight('qfLineNr', s:default_text_bold)
+

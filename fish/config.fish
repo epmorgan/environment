@@ -19,11 +19,13 @@ end
 
 set -U fish_greeting ""
 
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 test -r '/Users/ethanmorgan/.opam/opam-init/init.fish' && source '/Users/ethanmorgan/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 
 #starship init fish | source
+
+zoxide init fish | source
 
 eval "$(rbenv init - --no-rehash fish)"
 
@@ -64,3 +66,11 @@ alias hs='git rev-parse --short HEAD'
 alias hm='git log --format=%B -n 1 HEAD'
 alias gt='git tag -s'
 alias gtv='git tag -v'
+alias nix-develop='nix develop --impure --command fish'
+
+set -g theme_display_group no
+
+set -g theme_display_rw no
+
+# dune
+source $HOME/.dune/env/env.fish

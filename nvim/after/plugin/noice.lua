@@ -5,6 +5,13 @@ require("noice").setup({
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
+    progress = {
+      enabled = false,
+      format = "lsp_progress",
+      format_done = "lsp_progress_done",
+      throttle = 1000 / 30,
+      view = "mini",
+    },
   },
   views = {
     mini = {

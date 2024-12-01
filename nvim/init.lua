@@ -41,66 +41,29 @@ let g:go_highlight_operators = 1
 ]], true)
 
 vim.api.nvim_command(
-  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.mm,*.php,*.odin,*.rs,*.cs,*.java,*.re,*.rei,*.res,*.resi,*.scala,*.sbt lua vim.lsp.buf.format()")
+  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.mm,*.php,*.odin,*.rs,*.cs,*.java,*.re,*.rei,*.res,*.resi,*.scala,*.sbt,*.gleam lua vim.lsp.buf.format()")
+
+vim.api.nvim_command("autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll")
 
 vim.o.termguicolors = true
 
-require("catppuccin").setup({
-  transparent_background = true,
-})
+vim.o.background = "dark"
 
-
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme tokyonight-moon]]
+-- vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 require('gitsigns').setup()
 
-require('lualine').setup {
-  options = {
-    component_separators = '',
-    section_separators = { left = '', right = '' },
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-    lualine_b = { 'filename', 'branch' },
-    lualine_c = { 'diagnostic', 'filesize', 'diff' },
-    lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
-    lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
-    },
-  },
-  inactive_sections = {
-    lualine_a = { 'filename' },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
-  },
-  tabline = {
-    lualine_a = {
-      {
-        'buffers',
-        mode = 0,
-        path = 0,
-        use_mode_colors = true,
-        show_modified_status = true,
-        symbols = {
-          modified = ' ●', -- Text to show when the buffer is modified
-          alternate_file = '',
-          directory = '', -- Text to show when the buffer is a directory
-        },
-      }
-    },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  extensions = {},
-}
+require("tokyonight").setup({
+  style = {
+    comments = { italic = false },
+    keywords = { italic = false },
+    functions = { italic = false },
+    variables = { italic = false },
+  }
+})
 
+require("ts-error-translator").setup()
 require 'ocaml_mlx'

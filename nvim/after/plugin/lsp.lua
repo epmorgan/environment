@@ -32,7 +32,6 @@ lsp.setup_nvim_cmp({
 
 local options = { buffer = bufnr, remap = false }
 lsp.on_attach(function(client, bufnr)
-  lsp.buffer_autoformat()
   vim.keymap.set('n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', options)
   vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, options)
   vim.keymap.set("n", "bh", function() vim.lsp.buf.hover() end, options)
@@ -44,31 +43,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, options)
 end)
 
-
-local on_attach = function(client, bufnr)
-  vim.o.signcolumn = 'yes'
-
-  vim.o.updatetime = 250
-
-  vim.diagnostic.config({ virtual_text = false })
-
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = 'rounded',
-        source = 'always',
-        prefix = ' ',
-        scope = 'cursor',
-      }
-      vim.diagnostic.open_float(nil, opts)
-    end
-  })
-
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-end
 
 lsp.configure("vtsls", {
   root_dir = require("lspconfig").util.root_pattern("pnpm-workspace.yaml", "pnpm-lock.yaml", "yarn.lock",
@@ -82,8 +56,8 @@ lsp.configure("vtsls", {
 
 
 lspconfig.ruby_lsp.setup {}
-
 lspconfig.rescriptls.setup {}
+lspconfig.gleam.setup({})
 
 lspconfig.eslint.setup(
   {
@@ -139,6 +113,12 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true
+  }
+)
+
 
 vim.lsp.commands["editor.action.showReferences"] = function(command, ctx)
   local locations = command.arguments[3]
@@ -161,5 +141,6 @@ cmp.setup({
   },
 })
 
+-- vim.keymap.set("n", "<leader>r", require('ocaml.actions').update_interface_type, { desc = "[O]caml [U]pdate [T]ype" })
 
 lsp.setup()

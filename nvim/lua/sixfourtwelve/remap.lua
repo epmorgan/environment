@@ -18,5 +18,5 @@ vim.api.nvim_set_keymap('n', 's', 'xi', { noremap = true })
 
 vim.keymap.set("n", "<C-a>", "<cmd>:bprev<CR>zz")
 vim.keymap.set("n", "<C-s>", "<cmd>:bnext<CR>zz")
-vim.keymap.set("n", "<C-w>", "<cmd>:bdelete<CR>zz")
+-- vim.keymap.set("n", "<C-w>", "<cmd>:bdelete<CR>zz")
 vim.keymap.set("n", "<C-c>", "<cmd>:w<CR>zz")
