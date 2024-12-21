@@ -1,4 +1,3 @@
-local lspkind = require('lspkind')
 local lsp = require("lsp-zero")
 local lspconfig = require("lspconfig")
 local cmp = require('cmp')
@@ -9,26 +8,23 @@ lsp.set_preferences({
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
 })
 
-local cmp_select = { behavior = cmp.SelectBehavior.Insert }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-x>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-  ['<Tab>'] = cmp.mapping.select_next_item({ behaviour = cmp.SelectBehavior.Insert }),
-  ['<S-Tab>'] = cmp.mapping.select_prev_item({ behaviour = cmp.SelectBehavior.Insert })
-})
+-- vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
+--   expr = true,
+--   replace_keycodes = false
+-- })
+--
+-- vim.g.copilot_no_tab_map = true
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  sources = {
-    { name = 'path' },
-    { name = 'nvim_lsp', keyword_length = 1 },
-    { name = 'buffer',   keyword_length = 3 },
-    { name = 'luasnip',  keyword_length = 2 },
-  }
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-x>'] = cmp.mapping.confirm({ select = true }),
+    ['<tab>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 's', }),
+  }),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 })
-
 
 local options = { buffer = bufnr, remap = false }
 lsp.on_attach(function(client, bufnr)
@@ -129,18 +125,5 @@ vim.lsp.commands["editor.action.showReferences"] = function(command, ctx)
     vim.api.nvim_command("lopen")
   end
 end
-
-cmp.setup({
-  formatting = {
-    fields = { 'abbr', 'kind', 'menu' },
-    format = lspkind.cmp_format({
-      mode = 'symbol_text',
-      maxwidth = 50,
-      ellipsis_char = '...',
-    })
-  },
-})
-
--- vim.keymap.set("n", "<leader>r", require('ocaml.actions').update_interface_type, { desc = "[O]caml [U]pdate [T]ype" })
 
 lsp.setup()

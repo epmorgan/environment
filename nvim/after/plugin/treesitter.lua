@@ -11,6 +11,17 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.crystal = {
+  install_info = {
+    url = "https://github.com/crystal-lang-tools/tree-sitter-crystal",
+    files = { "src/parser.c", "src/scanner.c" },
+    -- optional entries:
+    branch = "main",
+  },
+  filetype = "haxe",
+}
+
 require('treesitter-context').setup {
   enable = true
 }
