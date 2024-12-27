@@ -56,16 +56,38 @@ function fish_prompt
   echo -ns " $logo$cwd$git"
 end
 
-set --export PATH "/opt/homebrew/bin/" $PATH
+set -x PATH "/opt/homebrew/bin/" $PATH
+
+set -x DOCKER_HOST "unix:///Users/ethanmorgan/.colima/default/docker.sock"
 
 if not contains $HOME/.local/bin $PATH
     set -x PATH $HOME/.local/bin $PATH
+end
+
+if not contains $HOME/zig/build/stage3/bin $PATH
+    set -x PATH $HOME/zig/build/stage3/bin $PATH
+end
+
+if not contains $HOME/odin $PATH
+    set -x PATH $HOME/odin $PATH
+end
+
+if not contains $HOME/odin/ols $PATH
+    set -x PATH $HOME/odin/ols $PATH
+end
+
+
+if not contains $HOME/Developer/roc_nightly-macos_apple_silicon-2024-12-23-0bf249afcbb $PATH
+    set -x PATH $HOME/Developer/roc_nightly-macos_apple_silicon-2024-12-23-0bf249afcbb/ $PATH
 end
 
 if not contains $HOME/go/bin $PATH
     set -x PATH $HOME/go/bin $PATH
 end
 
+if not contains /opt/homebrew/opt/llvm/bin $PATH
+  set -x PATH /opt/homebrew/opt/llvm/bin $PATH
+end
 
 set -gx NVM_DIR (brew --prefix nvm)
 set -x PNPM_HOME "/Users/ethanmorgan/Library/pnpm"
@@ -86,8 +108,8 @@ zoxide init fish | source
 eval "$(rbenv init - --no-rehash fish)"
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -x BUN_INSTALL "$HOME/.bun"
+set -x PATH $BUN_INSTALL/bin $PATH
 
 set -gx NVM_DIR (brew --prefix nvm)
 set --universal nvm_default_version 22.9
@@ -95,6 +117,9 @@ set --universal nvm_default_version 22.9
 export GPG_TTY=$(tty)
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/ethanmorgan/.ghcup/bin $PATH # ghcup-env
+
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
 
 alias gst='git status'
 alias gaa='git add -A'
@@ -116,8 +141,8 @@ alias lr='git l -30'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
 alias hs='git rev-parse --short HEAD'
 alias hm='git log --format=%B -n 1 HEAD'
-#alias gt='git tag -s'
-#alias gtv='git tag -v'
+alias gts='git tag -s'
+alias gtv='git tag -v'
 alias nix-develop='nix develop --impure --command fish'
 alias dfd="cd ~/Developer"
 

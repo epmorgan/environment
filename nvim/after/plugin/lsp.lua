@@ -94,6 +94,14 @@ lspconfig.eslint.setup(
   }
 )
 
+lspconfig.roc_ls.setup {}
+lspconfig.zls.setup {}
+lspconfig.ols.setup {
+  init_options = {
+    checker_args = "-strict-style"
+  },
+}
+
 lspconfig.hls.setup {
   filetypes = { 'haskell', 'lhaskell', 'cabal' },
   settings = {

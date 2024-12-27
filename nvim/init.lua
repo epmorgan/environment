@@ -41,7 +41,7 @@ let g:go_highlight_operators = 1
 ]], true)
 
 vim.api.nvim_command(
-  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.mm,*.php,*.odin,*.rs,*.cs,*.java,*.re,*.rei,*.res,*.resi,*.scala,*.sbt,*.gleam,*.ts,*.tsx,*.test.ts,*.test.tsx,*.js,*.jsx,*.test.js,*.test.jsx,*.cr  lua vim.lsp.buf.format()")
+  "autocmd BufWritePre *.ex,*.go,*.lua,*.rb,*.hs,*.py,*.ml,*.mli,*.c,*.h,*.cc,*.hh,*.cpp,*.hpp,*.m,*.mm,*.php,*.odin,*.rs,*.cs,*.java,*.re,*.rei,*.res,*.resi,*.scala,*.sbt,*.gleam,*.ts,*.tsx,*.test.ts,*.test.tsx,*.js,*.jsx,*.test.js,*.test.jsx,*.cr,*.odin  lua vim.lsp.buf.format()")
 
 -- vim.api.nvim_command("autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll")
 

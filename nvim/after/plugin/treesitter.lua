@@ -16,14 +16,40 @@ parser_config.crystal = {
   install_info = {
     url = "https://github.com/crystal-lang-tools/tree-sitter-crystal",
     files = { "src/parser.c", "src/scanner.c" },
-    -- optional entries:
     branch = "main",
   },
-  filetype = "haxe",
+  filetype = "crystal",
 }
 
+local roc_conf = require "nvim-treesitter.parsers".get_parser_configs()
+roc_conf.roc = {
+  install_info = {
+    url = "https://github.com/faldor20/tree-sitter-roc",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  filetype = "roc",
+}
+
+local list = require("nvim-treesitter.parsers").get_parser_configs()
+list.reason = {
+  install_info = {
+    url = "https://github.com/reasonml-editor/tree-sitter-reason",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "master",
+  },
+}
+
+-- vim.filetype.add {
+--   extension = {
+--     re = "reason",
+--   },
+-- }
+--
+-- vim.treesitter.language.add("reason", { filetype = "reason" })
+
 require('treesitter-context').setup {
-  enable = true
+  enable = false
 }
 
 vim.opt.foldmethod = "expr"

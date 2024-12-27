@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 return require("lazy").setup({
+  { "reasonml-editor/vim-reason-plus" },
   { "vim-crystal/vim-crystal" },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
