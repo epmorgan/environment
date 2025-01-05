@@ -5,12 +5,11 @@ end
 function tmux-cd
     if test -n "$TMUX"
         set -l current_dir (pwd)
-        tmux-cmd "cd $current_dir"
+        tmux-cmd "cd $current_dir" > /dev/null 2>&1
     else
-        echo "Not in a tmux session"
+        echo "Not in a tmux session"  # This will still be shown
     end
 end
-
 
 function git_status
   set -l dirty            "✖"
@@ -71,6 +70,11 @@ end
 if not contains $HOME/odin $PATH
     set -x PATH $HOME/odin $PATH
 end
+
+if not contains $HOME/vcpkg $PATH
+    set -x PATH $HOME/vcpkg $PATH
+end
+
 
 if not contains $HOME/odin/ols $PATH
     set -x PATH $HOME/odin/ols $PATH

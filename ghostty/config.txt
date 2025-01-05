@@ -1,0 +1,12 @@
+shell-integration = fish
+theme = vesper
+background = #0E0E0E
+background-opacity = 1
+font-size = 20
+font-family = MonoLisa Nerd Font
+window-inherit-font-size = true
+bold-is-bright = true
+window-padding-x = 4
+window-padding-y = 4
+mouse-hide-while-typing = true
+font-thicken = true
