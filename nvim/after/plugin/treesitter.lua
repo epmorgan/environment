@@ -21,16 +21,6 @@ parser_config.crystal = {
   filetype = "crystal",
 }
 
-local roc_conf = require "nvim-treesitter.parsers".get_parser_configs()
-roc_conf.roc = {
-  install_info = {
-    url = "https://github.com/faldor20/tree-sitter-roc",
-    files = { "src/parser.c", "src/scanner.c" },
-    branch = "main",
-  },
-  filetype = "roc",
-}
-
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 list.reason = {
   install_info = {
@@ -40,17 +30,34 @@ list.reason = {
   },
 }
 
--- vim.filetype.add {
---   extension = {
---     re = "reason",
---   },
--- }
---
--- vim.treesitter.language.add("reason", { filetype = "reason" })
+vim.filetype.add {
+  extension = {
+    re = "reason",
+  },
+}
+
+vim.treesitter.language.add("reason", { filetype = "reason" })
 
 require('treesitter-context').setup {
   enable = false
 }
+
+local parser_config2 = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config2.haxe = {
+  install_info = {
+    url = "https://github.com/vantreeseba/tree-sitter-haxe",
+    files = { "src/parser.c", "src/scanner.c" },
+    -- optional entries:
+    branch = "main",
+  },
+  filetype = "haxe",
+}
+
+vim.filetype.add({
+  extension = {
+    hx = 'haxe',
+  },
+})
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

@@ -1,16 +1,20 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 [character]
-success_symbol = '[󰘧](bold green)'
-error_symbol = '[󰘧](bold red)'
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
 
 [git_branch]
 symbol = " "
 style = "bold yellow"
 
-[custom.sapling_commit]
-command = "sl log -r . -T \"{ifeq(activebookmark, \\\"\\\", \\\"{node|short}\\\", \\\"{activebookmark}\\\")}\" | awk 'NR==1{print \"󰌪 \" $0}'"
-when = "sl show > /dev/null 2>&1; test $? -eq 0"
-style = "#a6da95"
-format = "on [$output]($style) "
-shell = ["fish"]
+[scala]
+symbol = ""
+format = ""
+
+# [custom.sapling_commit]
+# command = "sl log -r . -T \"{ifeq(activebookmark, \\\"\\\", \\\"{node|short}\\\", \\\"{activebookmark}\\\")}\" | awk 'NR==1{print \"󰌪 \" $0}'"
+# when = "sl show > /dev/null 2>&1; test $? -eq 0"
+# style = "#a6da95"
+# format = "on [$output]($style) "
+# shell = ["fish"]

@@ -1,8 +1,6 @@
 shell-integration = fish
-theme = vesper
-background = #0E0E0E
-background-opacity = 1
-font-size = 20
+theme = tokyonight_moon
+font-size = 26
 font-family = MonoLisa Nerd Font
 window-inherit-font-size = true
 bold-is-bright = true

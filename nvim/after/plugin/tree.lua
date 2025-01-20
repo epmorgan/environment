@@ -1,3 +1,19 @@
+require 'nvim-web-devicons'.setup {
+  strict = true,
+  override_by_extension = {
+    ["re"] = {
+      icon = "",
+      color = "#DC4C39",
+      name = "ReasonML"
+    },
+    ["rei"] = {
+      icon = "",
+      color = "#B8383C",
+      name = "ReasonMLInterface"
+    }
+  },
+}
+
 require 'nvim-tree'.setup {
   git = {
     ignore = false
